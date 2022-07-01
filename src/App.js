@@ -1,22 +1,54 @@
-import "./App.css";
 import React from "react";
-import Papa from "papaparse";
-import data from "./CSV.csv";
+import studentsData from "./studentsData";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryStack,
+} from "victory";
 
-//Parse CSV file 
-function App() {
-  Papa.parse(data, {
-    header: true,
-    download: true,
-    dynamicTyping: true,
-    complete: function (results) {
-      data = results.data;
-      console.log(data);
-      console.log(results);
-    },
-  });
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-  return (<div></div>);
+  render() {
+    const fun = studentsData.map((student) => {
+      return student.fun;
+    });
+
+    const assignment = studentsData.map((student) => {
+      return student.assignment;
+    });
+    return (
+      <div>
+        <VictoryChart theme={VictoryTheme.material} domainPadding={200}>
+          <VictoryAxis
+            // X-as
+            label="Assignment"
+            // tickValues={assignment} // tickValues specifies both the number of ticks and where they are placed on the axis
+            tickFormat={assignment} // tickFormat specifies how ticks should be displayed
+          />
+          <VictoryAxis
+            //Y-as
+            label="Fun rating"
+            dependentAxis
+            tickFormat={fun}
+          />
+
+          <VictoryStack>
+            <VictoryBar
+              data={fun}
+              x="assignment" // data accessor for x values
+              y="10" // data accessor for y values
+            />
+          </VictoryStack>
+        </VictoryChart>
+      </div>
+    );
+  }
 }
 
 export default App;
