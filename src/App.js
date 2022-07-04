@@ -15,28 +15,64 @@ class App extends React.Component {
   }
 
   render() {
-    const fun = studentsData.map((student) => {
-      return student.fun;
+    //gemiddelden verkrijgen van de opdrachten met difficulty
+    //First it reduces the original array to a Map that accumulates the ratings of duplicate entries in an array.
+    const mapDataDifficulty = studentsData.reduce(
+      (acc, { assignment, difficulty }) => {
+        const match = acc.get(assignment);
+        match ? match.push(difficulty) : acc.set(assignment, [difficulty]);
+        return acc;
+      },
+      new Map()
+    );
+
+    //We then convert this Map back to an array using Array.from and reducing the array of ratings to an average.
+    const averageArrayDifficulty = Array.from(
+      mapDataDifficulty,
+      ([assignment, difficulty]) => {
+        const difficultyRating = Math.round(
+          difficulty.reduce((a, r) => a + r) / difficulty.length
+        );
+        return { assignment, difficultyRating };
+      }
+    );
+    console.log(averageArrayDifficulty);
+
+    const mapDataFun = studentsData.reduce((acc, { assignment, fun }) => {
+      const match = acc.get(assignment);
+      match ? match.push(fun) : acc.set(assignment, [fun]);
+      return acc;
+    }, new Map());
+
+    const averageArrayFun = Array.from(mapDataFun, ([assignment, fun]) => {
+      const funRating = Math.round(fun.reduce((a, r) => a + r) / fun.length);
+      return { assignment, funRating };
+    });
+    console.log(averageArrayFun);
+
+    const fun = averageArrayFun.map((student) => {
+      return student.funRating;
     });
 
-    const difficulty = studentsData.map((student) => {
-      return student.difficulty;
+    const difficulty = averageArrayDifficulty.map((student) => {
+      return student.difficultyRating;
     });
-    console.log(difficulty);
+    //console.log(difficulty);
 
-    const assignment = studentsData.map((student) => {
+    const assignment = averageArrayDifficulty.map((student) => {
       return student.assignment;
     });
-    console.log(assignment);
+    // console.log(Object.keys(studentsData))
+
     return (
       <div>
         <VictoryChart theme={VictoryTheme.material} width={700} height={300}>
           <VictoryAxis
             // X-as
             style={{
-              axisLabel: { fontSize: 14, padding: 30},
-              ticks: { stroke: "grey", size: 5 },
-              tickLabels: { fontSize: 7, padding: 20, angle: -45 },
+              axisLabel: { fontSize: 14, padding: 30 },
+              ticks: { stroke: "grey", size: 1 },
+              tickLabels: { fontSize: 6, padding: 20, angle: -90 },
             }}
             label="Assignment"
             // tickValues specifies both the number of ticks and where they are placed on the axis
@@ -56,8 +92,9 @@ class App extends React.Component {
           />
 
           <VictoryGroup
-            offset={0}
-            style={{ data: { width: 4} }}
+            offset={3} //The offset prop determines the number of pixels each element in a group should be offset from its original position of the on the independent axis
+            //In the case of groups of bars, this number should be equal to the width of the bar plus the desired spacing between bars.
+            style={{ data: { width: 3 } }}
             colorScale={["lightgreen", "red"]}
           >
             <VictoryBar data={fun} />
