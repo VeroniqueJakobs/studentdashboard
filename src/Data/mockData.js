@@ -1,4 +1,4 @@
- [
+ const studentProfileData=[
   {
     id: "1",
     first_name: "Adler",
@@ -98,8 +98,7 @@
     profile_pic: "https://randomuser.me/api/portraits/women/63.jpg",
     age: "11/3/1998",
     phone: "518-248-1097"
-  },
-  {
-    id: ""
   }
 ]
+
+export default studentProfileData;
