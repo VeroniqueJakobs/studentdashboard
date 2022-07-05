@@ -24,6 +24,12 @@
   color: white;
 }
 
+.Header{
+  text-align: center;
+  background-color: rgb(113, 227, 235);
+}
+
+
 .App-link {
   color: #61dafb;
 }
