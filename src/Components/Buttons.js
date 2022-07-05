@@ -3,7 +3,7 @@ import Student from "./Student";
 
 function Buttons(props) {
   return (
-    <div className="buttons">
+    <div className="button-container">
       <h1> Student Profiles</h1>
       {props.mockData.map((student) => (
         <Student student={student} key={student.id} />

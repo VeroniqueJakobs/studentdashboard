@@ -12,9 +12,19 @@ class App extends React.Component {
     super();
     this.state = {
       data: studentsData,
-      mockData:studentProfileData,
+      mockData: studentProfileData,
+      checkFun: true,
+      checkDifficulty: true,
     };
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange = () => {
+    
+    this.setState({
+      checkFun: !this.state.checkFun,
+    });
+  };
 
   render() {
     //gemiddelden verkrijgen van de opdrachten met difficulty
@@ -53,14 +63,16 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Checkboxes />
+        <Checkboxes
+          checkFun={this.state.checkFun}
+          checkDifficulty={this.state.checkDifficulty}
+          handleChange={this.handleChange}
+        />
         <BarChart
           averageArrayFun={averageArrayFun}
           averageArrayDifficulty={averageArrayDifficulty}
         />
-        <Buttons 
-        mockData ={this.state.mockData}
-        />
+        <Buttons mockData={this.state.mockData} />
       </div>
     );
   }

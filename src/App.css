@@ -1,44 +1,78 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.button-container {
+  margin-top: 70px;
+  height: 270px;
+  background-color: rgb(152, 236, 242);
+  font-size: 100%;
   color: white;
+  padding-top: 20px;
 }
 
-.Header{
+.button-student {
+  background-color: white;
+  height: 24px;
+  padding-top: 7px;
+  font-size: 100%;
+}
+
+.checkboxes {
+  margin: 40px 10% 0px 10%;
+  font-size: 70%;
+  background-color: rgb(241, 236, 236);
+  padding: 10px;
+  border-radius: 10px;
+  color: rgb(62, 183, 192);
+}
+
+.header {
   text-align: center;
   background-color: rgb(113, 227, 235);
+  height: 150px;
+  color: white;
+  font-size: 200%;
 }
 
-
-.App-link {
-  color: #61dafb;
+.image-button {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.name-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.student-profiles {
+  margin-top: 20px;
+  width: 8%;
+  margin-right: 10px;
+  color: rgb(163, 163, 173);
+  border-color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .App-link {
+    color: #61dafb;
   }
-  to {
-    transform: rotate(360deg);
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .header {
+    text-align: center;
+    background-color: rgb(113, 227, 235);
+    height: 100px;
+    color: white;
+    font-size: 100%;
   }
 }
