@@ -5,12 +5,16 @@
 }
 
 .button-container {
-  margin-top: 70px;
-  height: 270px;
-  background-color: rgb(152, 236, 242);
+  margin-top: 140px;
+  background-color: rgb(213, 231, 250);
   font-size: 100%;
-  color: white;
-  padding-top: 20px;
+  color: black;
+  padding-top: 40px;
+  height:400px;
+}
+
+.button-name{
+  padding-top:20px;
 }
 
 .button-student {
@@ -18,23 +22,41 @@
   height: 24px;
   padding-top: 7px;
   font-size: 100%;
+  
 }
 
 .checkboxes {
   margin: 40px 10% 0px 10%;
-  font-size: 70%;
-  background-color: rgb(241, 236, 236);
-  padding: 10px;
-  border-radius: 10px;
-  color: rgb(62, 183, 192);
+
+}
+
+.footer{
+  background-color: rgb(79, 139, 201);
+  height: 60px;
+}
+
+.label-checkbox {
+  padding-right: 20px;
+}
+
+.select-checkboxes {
+  display: inline;
+   color: rgb(176, 181, 182);
+    margin: 0px 40px 10px 0px;
+    font-size:110%;
+}
+
+.title-overview{
+  color:black;
+  margin-bottom:15px;
+  font-size:150%;
 }
 
 .header {
-  text-align: center;
-  background-color: rgb(113, 227, 235);
-  height: 150px;
+  text-align: left;
+  background-color: rgb(79, 139, 201);
+  height: 100px;
   color: white;
-  font-size: 200%;
 }
 
 .image-button {
@@ -42,16 +64,23 @@
 }
 
 .name-header {
-  text-align: center;
-  padding: 20px;
+  font-size: 35px;
+  padding-left: 0%;
+  margin-top: -55px;
 }
 
 .student-profiles {
-  margin-top: 20px;
+  margin-top: 40px;
   width: 8%;
   margin-right: 10px;
-  color: rgb(163, 163, 173);
-  border-color: white;
+  font-size: 80%;
+  border-color: rgb(213, 231, 250);
+}
+
+.winc-logo {
+  height: 50px;
+  margin-top: 25px;
+  margin-left: 5%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -68,11 +97,7 @@
     }
   }
 
-  .header {
-    text-align: center;
-    background-color: rgb(113, 227, 235);
-    height: 100px;
-    color: white;
-    font-size: 100%;
+  .name-header {
+    padding-left: 10%;
   }
 }

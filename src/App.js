@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 import BarChart from "./Components/BarChart";
 import Buttons from "./Components/Buttons";
 import Checkboxes from "./Components/Checkboxes";
+import Footer from "./Components/Footer";
 
 class App extends React.Component {
   constructor() {
@@ -13,19 +14,17 @@ class App extends React.Component {
     this.state = {
       data: studentsData,
       mockData: studentProfileData,
-      checkFun: true,
-      checkDifficulty: true,
+      isFun: true,
+      isDifficulty: true,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = () => {
-    
-    this.setState({
-      checkFun: !this.state.checkFun,
-    });
-  };
-
+  handleChange(event) {
+    const {name, value, type, checked} = event.target
+    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+}
+  
   render() {
     //gemiddelden verkrijgen van de opdrachten met difficulty
     //First it reduces the original array to a Map that accumulates the ratings of duplicate entries in an array.
@@ -64,8 +63,8 @@ class App extends React.Component {
       <div>
         <Header />
         <Checkboxes
-          checkFun={this.state.checkFun}
-          checkDifficulty={this.state.checkDifficulty}
+          isFun={this.state.isFun}
+          isDifficulty={this.state.isDifficulty}
           handleChange={this.handleChange}
         />
         <BarChart
@@ -73,6 +72,8 @@ class App extends React.Component {
           averageArrayDifficulty={averageArrayDifficulty}
         />
         <Buttons mockData={this.state.mockData} />
+        <Footer />
+      
       </div>
     );
   }

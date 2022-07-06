@@ -3,14 +3,15 @@ import React from "react";
 function Checkboxes(props) {
   return (
     <div className="checkboxes">
-      <h1> Select the rating you want to view</h1>
-      <label>
+      <h1 className="title-overview">Overview of the average of the evaluations of all students</h1>
+      <h2 className="select-checkboxes"> Select the evaluation you want to view:</h2>
+      <label className="label-checkbox">
         <input
           type="checkbox"
           name="fun"
-          value="fun"
-          checked={props.checkFun}
+          checked={props.isFun}
           onChange={props.handleChange}
+      
         />
         Fun 
       </label>
@@ -18,8 +19,7 @@ function Checkboxes(props) {
         <input
           type="checkbox"
           name="difficult"
-          value="difficult"
-          checked={props.checkDifficulty}
+         checked={props.isDifficulty}
           onChange={props.handleChange}
         />
         Difficult 
