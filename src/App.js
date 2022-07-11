@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import studentsData from "./Data/studentsData";
 import studentProfileData from "./Data/mockData";
@@ -8,75 +8,71 @@ import Buttons from "./Components/Buttons";
 import Checkboxes from "./Components/Checkboxes";
 import Footer from "./Components/Footer";
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: studentsData,
-      mockData: studentProfileData,
-      isFun: true,
-      isDifficulty: true,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+function App() {
+  const [data, setData] = useState(studentsData);
+  const [mockData, setMockData] = useState(studentProfileData);
+  const [userInfo, setUserInfo] = useState({
+    checkRating: false,
+    response: false,
+  });
 
-  handleChange(event) {
-    const {name, value, type, checked} = event.target
-    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
-}
-  
-  render() {
-    //gemiddelden verkrijgen van de opdrachten met difficulty
-    //First it reduces the original array to a Map that accumulates the ratings of duplicate entries in an array.
-    const mapDataDifficulty = this.state.data.reduce(
-      (acc, { assignment, difficulty }) => {
-        const match = acc.get(assignment);
-        match ? match.push(difficulty) : acc.set(assignment, [difficulty]);
-        return acc;
-      },
-      new Map()
-    );
+  const handleChange = (e) => {
+    const { value, checked } = e.target;
+    const { checkRating } = userInfo;
 
-    //We then convert this Map back to an array using Array.from and reducing the array of ratings to an average.
-    const averageArrayDifficulty = Array.from(
-      mapDataDifficulty,
-      ([assignment, difficulty]) => {
-        const difficultyRating = Math.round(
-          difficulty.reduce((a, r) => a + r) / difficulty.length
-        );
-        return { assignment, difficultyRating };
-      }
-    );
+    if (checked) {
+      setUserInfo({
+        checkRating: [...checkRating, value],
+        response: [...checkRating, value],
+      });
+    } else {
+      setUserInfo({
+        checkRating: checkRating.filter((e) => e !== value),
+        response: checkRating.filter((e) => e !== value),
+      });
+    }
+  };
 
-    const mapDataFun = this.state.data.reduce((acc, { assignment, fun }) => {
-      const match = acc.get(assignment);
-      match ? match.push(fun) : acc.set(assignment, [fun]);
-      return acc;
-    }, new Map());
+  //gemiddelden verkrijgen van de opdrachten met difficulty
+  const mapDataDifficulty = data.reduce((acc, { assignment, difficulty }) => {
+    const match = acc.get(assignment);
+    match ? match.push(difficulty) : acc.set(assignment, [difficulty]);
+    return acc;
+  }, new Map());
 
-    const averageArrayFun = Array.from(mapDataFun, ([assignment, fun]) => {
-      const funRating = Math.round(fun.reduce((a, r) => a + r) / fun.length);
-      return { assignment, funRating };
-    });
+  const averageArrayDifficulty = Array.from(
+    mapDataDifficulty,
+    ([assignment, difficulty]) => {
+      const difficultyRating = Math.round(
+        difficulty.reduce((a, r) => a + r) / difficulty.length
+      );
+      return { assignment, difficultyRating };
+    }
+  );
 
-    return (
-      <div>
-        <Header />
-        <Checkboxes
-          isFun={this.state.isFun}
-          isDifficulty={this.state.isDifficulty}
-          handleChange={this.handleChange}
-        />
-        <BarChart
-          averageArrayFun={averageArrayFun}
-          averageArrayDifficulty={averageArrayDifficulty}
-        />
-        <Buttons mockData={this.state.mockData} />
-        <Footer />
-      
-      </div>
-    );
-  }
+  const mapDataFun = data.reduce((acc, { assignment, fun }) => {
+    const match = acc.get(assignment);
+    match ? match.push(fun) : acc.set(assignment, [fun]);
+    return acc;
+  }, new Map());
+
+  const averageArrayFun = Array.from(mapDataFun, ([assignment, fun]) => {
+    const funRating = Math.round(fun.reduce((a, r) => a + r) / fun.length);
+    return { assignment, funRating };
+  });
+
+  return (
+    <div>
+      <Header />
+      <Checkboxes handleChange={handleChange} />
+      <BarChart
+        averageArrayFun={averageArrayFun}
+        averageArrayDifficulty={averageArrayDifficulty}
+      />
+      <Buttons mockData={mockData} />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
