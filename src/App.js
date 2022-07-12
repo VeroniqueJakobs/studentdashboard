@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import StudentList from "./Components/Studentlist";
 import "./App.css";
 import studentsData from "./Data/studentsData";
 import studentProfileData from "./Data/mockData";
 import Header from "./Components/Header";
 import BarChart from "./Components/BarChart";
-import Buttons from "./Components/Buttons";
 import Checkboxes from "./Components/Checkboxes";
 import Footer from "./Components/Footer";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import StudentProfile from "./Components/StudentProfile";
 
 function App() {
   const [data, setData] = useState(studentsData);
@@ -15,6 +17,7 @@ function App() {
     checkRating: false,
     response: false,
   });
+  console.log(mockData);
 
   const handleChange = (e) => {
     const { value, checked } = e.target;
@@ -69,7 +72,16 @@ function App() {
         averageArrayFun={averageArrayFun}
         averageArrayDifficulty={averageArrayDifficulty}
       />
-      <Buttons mockData={mockData} />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<StudentList mockData={mockData} />} />
+          <Route
+            path="/cards/:first_name"
+            element={<StudentProfile mockData={mockData} />}
+          />
+        </Routes>
+      </Router>
+
       <Footer />
     </div>
   );

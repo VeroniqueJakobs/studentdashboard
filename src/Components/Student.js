@@ -1,21 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Student(props) {
-    
+const Student = ({ mockData }) => {
   return (
-   
-    <button 
-      key={props.student.id}
-      id={props.student.id}
-      className="student-profiles"
-      value={props.student.title}
-     // onClick={() => goToPageStudent(student)}  als je klikt op de button, ga je naar de pagina van deze student
-    >
-    
-     <img src={props.student.profile_pic} alt="StudentLogo" className="image-button "/>
-     <h3 className="button-student">{props.student.first_name}</h3>
-    </button>
+    <div>
+      {mockData?.map((student) => (
+        <button
+          key={student.id}
+          id={student.id}
+          className="student-profiles"
+          value={student.title}
+          name={student.first_name}
+        >
+          <img
+            src={student.profile_pic}
+            alt="StudentLogo"
+            className="image-button "
+          />
+
+          <Link to={`/students/${student.first_name}`}>
+            {" "}
+            <h1 className="button-student">{student.first_name}</h1>
+          </Link>
+        </button>
+      ))}
+    </div>
   );
-}
+};
 
 export default Student;
