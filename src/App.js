@@ -27,6 +27,7 @@ function App() {
       setUserInfo({
         checkRating: [...checkRating, value],
         response: [...checkRating, value],
+        
       });
     } else {
       setUserInfo({
@@ -67,15 +68,22 @@ function App() {
   return (
     <div>
       <Header />
-      <Checkboxes handleChange={handleChange} />
-      <BarChart
-        averageArrayFun={averageArrayFun}
-        averageArrayDifficulty={averageArrayDifficulty}
-      />
-
       <Router>
         <Routes>
-          <Route exact path="/" element={<StudentList mockData={mockData} />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Checkboxes handleChange={handleChange} />
+                <BarChart
+                  averageArrayFun={averageArrayFun}
+                  averageArrayDifficulty={averageArrayDifficulty}
+                />
+                <StudentList mockData={mockData} />
+              </>
+            }
+          />
           <Route
             path="/students/:first_name"
             element={<StudentProfile mockData={mockData} data={data} />}

@@ -8,22 +8,30 @@ const StudentProfile = ({ data, mockData }) => {
   return (
     <section>
       <div>
-         {mockData
+        {mockData
           .filter((student) => student.first_name === first_name)
           .map((student, index) => (
             <div key={index}>
-              <h1>
-                {student.first_name} {student.last_name}
-              </h1>
+              <div>
+                <h2 className="student-title-overview">
+                  Overview of the evaluation of   
+                <h1 className="student-name">{student.first_name} {student.last_name}</h1>
+                </h2>
+
+                
+
+
+                <img
+                  src={student.profile_pic}
+                  alt="StudentLogo"
+                  className="profile-picture"
+                />
+              </div>
+
               <p>Gender: {student.gender}</p>
               <p>Date of birth: {student.age}</p>
               <p>Email: {student.email}</p>
               <p>Phone: {student.phone}</p>
-              <img
-                src={student.profile_pic}
-                alt="StudentLogo"
-                className="profile-picture"
-              />
             </div>
           ))}
       </div>

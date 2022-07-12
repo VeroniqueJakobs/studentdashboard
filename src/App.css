@@ -10,11 +10,11 @@
   font-size: 100%;
   color: black;
   padding-top: 40px;
-  height:400px;
+  height: 400px;
 }
 
-.button-name{
-  padding-top:20px;
+.button-name {
+  padding-top: 20px;
 }
 
 .button-student {
@@ -22,15 +22,13 @@
   height: 24px;
   padding-top: 7px;
   font-size: 100%;
-  
 }
 
 .checkboxes {
   margin: 40px 10% 0px 10%;
-
 }
 
-.footer{
+.footer {
   background-color: rgb(79, 139, 201);
   height: 60px;
 }
@@ -39,17 +37,27 @@
   padding-right: 20px;
 }
 
-.select-checkboxes {
-  display: inline;
-   color: rgb(176, 181, 182);
-    margin: 0px 40px 10px 0px;
-    font-size:110%;
+.profile-picture {
+  width: 100px;
 }
 
-.title-overview{
-  color:black;
-  margin-bottom:15px;
-  font-size:150%;
+.select-checkboxes {
+  display: inline;
+  color: rgb(176, 181, 182);
+  margin: 0px 40px 10px 0px;
+  font-size: 110%;
+}
+
+.student-name {
+  color: black;
+
+}
+
+.student-title-overview {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: rgb(176, 181, 182);
 }
 
 .header {

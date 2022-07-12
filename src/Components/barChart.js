@@ -5,6 +5,7 @@ import {
   VictoryAxis,
   VictoryTheme,
   VictoryGroup,
+  VictoryLegend
 } from "victory";
 
 function BarChart(props) {
@@ -27,6 +28,21 @@ function BarChart(props) {
       height={300}
       domain={{ x: [0, 58] }}
     >
+      <VictoryLegend
+        x={265}
+        y={24}
+        title=""
+        itemsPerRow={2}
+        orientation="horizontal"
+        gutter={40}
+        style={{ border: { stroke: "none" }, title: { fontSize: 14 } }}
+        data={[
+          { name: "Fun", symbol: { fill: "lightgreen", type: "square", } },
+          { name: "Difficulty", symbol: { fill: "red", type: "square" } },
+        
+        ]}
+      />
+
       <VictoryAxis
         // X-as
 
