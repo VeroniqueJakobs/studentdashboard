@@ -72,12 +72,13 @@ function App() {
         averageArrayFun={averageArrayFun}
         averageArrayDifficulty={averageArrayDifficulty}
       />
+
       <Router>
         <Routes>
           <Route exact path="/" element={<StudentList mockData={mockData} />} />
           <Route
-            path="/cards/:first_name"
-            element={<StudentProfile mockData={mockData} />}
+            path="/students/:first_name"
+            element={<StudentProfile mockData={mockData} data={data} />}
           />
         </Routes>
       </Router>
