@@ -14,14 +14,15 @@ function App() {
   const [data, setData] = useState(studentsData);
   const [mockData, setMockData] = useState(studentProfileData);
   const [userInfo, setUserInfo] = useState({
-    isFun: false,
-    isDifficulty: false,
+    isFun: true,
+    isDifficulty: true,
   });
 
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const isChecked = event.target.checked;
+
     setUserInfo({
       ...userInfo,
       [name]: isChecked,
@@ -70,6 +71,7 @@ function App() {
                 <BarChart
                   averageArrayFun={averageArrayFun}
                   averageArrayDifficulty={averageArrayDifficulty}
+                  userInfo={userInfo}
                 />
                 <StudentList mockData={mockData} />
               </>

@@ -5,19 +5,19 @@ import {
   VictoryAxis,
   VictoryTheme,
   VictoryGroup,
-  VictoryLegend
+  VictoryLegend,
 } from "victory";
 
-function BarChart(props) {
-  const fun = props.averageArrayFun.map((student) => {
+function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
+  const fun = averageArrayFun.map((student) => {
     return student.funRating;
   });
 
-  const difficulty = props.averageArrayDifficulty.map((student) => {
+  const difficulty = averageArrayDifficulty.map((student) => {
     return student.difficultyRating;
   });
 
-  const assignment = props.averageArrayDifficulty.map((student) => {
+  const assignment = averageArrayDifficulty.map((student) => {
     return student.assignment;
   });
 
@@ -37,9 +37,8 @@ function BarChart(props) {
         gutter={40}
         style={{ border: { stroke: "none" }, title: { fontSize: 14 } }}
         data={[
-          { name: "Fun", symbol: { fill: "lightgreen", type: "square", } },
+          { name: "Fun", symbol: { fill: "lightgreen", type: "square" } },
           { name: "Difficulty", symbol: { fill: "red", type: "square" } },
-        
         ]}
       />
 
@@ -76,8 +75,16 @@ function BarChart(props) {
         style={{ data: { width: 3 } }}
         colorScale={["lightgreen", "red"]}
       >
-        <VictoryBar data={fun} />
-        <VictoryBar data={difficulty} />
+        <VictoryBar
+          data={fun}
+          style={{ data: { display: userInfo.isFun ? "block" : "none" } }}
+        />
+        <VictoryBar
+          data={difficulty}
+          style={{
+            data: { display: userInfo.isDifficulty ? "block" : "none" },
+          }}
+        />
       </VictoryGroup>
     </VictoryChart>
   );

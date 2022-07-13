@@ -14,8 +14,8 @@ function Checkboxes({ handleChange, userInfo }) {
         <input
           type="checkbox"
           name="isFun"
-          value="Fun"
-          // checked={userInfo.isFun === true}
+         // value="Fun"
+          checked={userInfo.isFun}
           onChange={handleChange}
         />
         Fun
@@ -24,8 +24,8 @@ function Checkboxes({ handleChange, userInfo }) {
         <input
           type="checkbox"
           name="isDifficulty"
-          value="Difficulty"
-          //  checked={userInfo.isDifficult === true}
+        //  value="Difficulty"  Bij gebruik van de value is het een ongecontroleerd element, vandaar het gebruik van checked
+          checked={userInfo.isDifficulty}
           onChange={handleChange}
         />
         Difficulty
