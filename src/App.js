@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useDebugValue, useState } from "react";
 import StudentList from "./Components/Studentlist";
 import "./App.css";
 import studentsData from "./Data/studentsData";
@@ -7,34 +7,25 @@ import Header from "./Components/Header";
 import BarChart from "./Components/BarChart";
 import Checkboxes from "./Components/Checkboxes";
 import Footer from "./Components/Footer";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StudentProfile from "./Components/StudentProfile";
 
 function App() {
   const [data, setData] = useState(studentsData);
   const [mockData, setMockData] = useState(studentProfileData);
   const [userInfo, setUserInfo] = useState({
-    checkRating: false,
-    response: false,
+    isFun: false,
+    isDifficulty: false,
   });
-  console.log(mockData);
 
-  const handleChange = (e) => {
-    const { value, checked } = e.target;
-    const { checkRating } = userInfo;
-
-    if (checked) {
-      setUserInfo({
-        checkRating: [...checkRating, value],
-        response: [...checkRating, value],
-        
-      });
-    } else {
-      setUserInfo({
-        checkRating: checkRating.filter((e) => e !== value),
-        response: checkRating.filter((e) => e !== value),
-      });
-    }
+  const handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const isChecked = event.target.checked;
+    setUserInfo({
+      ...userInfo,
+      [name]: isChecked,
+    });
   };
 
   //gemiddelden verkrijgen van de opdrachten met difficulty
@@ -47,13 +38,13 @@ function App() {
   const averageArrayDifficulty = Array.from(
     mapDataDifficulty,
     ([assignment, difficulty]) => {
-      const difficultyRating = Math.round(
-        difficulty.reduce((a, r) => a + r) / difficulty.length
-      );
+      const difficultyRating =
+        difficulty.reduce((a, r) => a + r) / difficulty.length;
       return { assignment, difficultyRating };
     }
   );
 
+  //gemiddelden verkrijgen van de opdrachten met fun
   const mapDataFun = data.reduce((acc, { assignment, fun }) => {
     const match = acc.get(assignment);
     match ? match.push(fun) : acc.set(assignment, [fun]);
@@ -61,7 +52,7 @@ function App() {
   }, new Map());
 
   const averageArrayFun = Array.from(mapDataFun, ([assignment, fun]) => {
-    const funRating = Math.round(fun.reduce((a, r) => a + r) / fun.length);
+    const funRating = fun.reduce((a, r) => a + r) / fun.length;
     return { assignment, funRating };
   });
 
@@ -75,7 +66,7 @@ function App() {
             path="/"
             element={
               <>
-                <Checkboxes handleChange={handleChange} />
+                <Checkboxes handleChange={handleChange} userInfo={userInfo} />
                 <BarChart
                   averageArrayFun={averageArrayFun}
                   averageArrayDifficulty={averageArrayDifficulty}

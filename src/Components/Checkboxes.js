@@ -1,6 +1,6 @@
 import React from "react";
 
-function Checkboxes({ handleChange }) {
+function Checkboxes({ handleChange, userInfo }) {
   return (
     <div className="checkboxes">
       <h1 className="title-overview">
@@ -13,8 +13,9 @@ function Checkboxes({ handleChange }) {
       <label className="label-checkbox">
         <input
           type="checkbox"
-          name="checkRating"
+          name="isFun"
           value="Fun"
+          // checked={userInfo.isFun === true}
           onChange={handleChange}
         />
         Fun
@@ -22,11 +23,12 @@ function Checkboxes({ handleChange }) {
       <label>
         <input
           type="checkbox"
-          name="checkRating"
+          name="isDifficulty"
           value="Difficulty"
+          //  checked={userInfo.isDifficult === true}
           onChange={handleChange}
         />
-        Difficult
+        Difficulty
       </label>
     </div>
   );
