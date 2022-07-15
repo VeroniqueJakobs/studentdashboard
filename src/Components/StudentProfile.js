@@ -1,8 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Header from "./Header";
+import BarChartStudent from "./BarChart";
 
-const StudentProfile = ({ data, mockData }) => {
+const StudentProfile = ({
+  mockData,
+  studentArrayDifficulty,
+  studentArrayFun,
+}) => {
   const { first_name } = useParams();
 
   return (
@@ -13,13 +17,12 @@ const StudentProfile = ({ data, mockData }) => {
           .map((student, index) => (
             <div key={index}>
               <div>
-                <h2 className="student-title-overview">
-                  Overview of the evaluation of   
-                <h1 className="student-name">{student.first_name} {student.last_name}</h1>
+                <h1 className="student-title-overview">
+                  Overview of the evaluation of{" "}
+                </h1>
+                <h2 className="student-name">
+                  {student.first_name} {student.last_name}
                 </h2>
-
-                
-
 
                 <img
                   src={student.profile_pic}

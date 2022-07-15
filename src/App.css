@@ -5,7 +5,7 @@
 }
 
 .button-container {
-  margin-top: 140px;
+  margin-top: 20px;
   background-color: rgb(213, 231, 250);
   font-size: 100%;
   color: black;
@@ -25,7 +25,7 @@
 }
 
 .checkboxes {
-  margin: 40px 10% 0px 10%;
+  margin: 40px 10% 30px 10%;
 }
 
 .footer {
@@ -50,13 +50,15 @@
 
 .student-name {
   color: black;
+  margin-top:-14px;
+  font-size:200%;
 
 }
 
 .student-title-overview {
   margin-top: 30px;
   margin-bottom: 15px;
-  font-size: 20px;
+  font-size: 100%;
   color: rgb(176, 181, 182);
 }
 

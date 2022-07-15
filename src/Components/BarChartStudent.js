@@ -10,18 +10,18 @@ import {
   VictoryLabel,
 } from "victory";
 
-function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
-  const fun = averageArrayFun.map((student) => {
-    return student.funRating;
-  });
+function BarChartStudent({ averageArrayDifficulty, averageArrayFun }) {
+  // const fun = averageArrayFun.map((student) => {
+  //   return student.funRating;
+  // });
 
-  const difficulty = averageArrayDifficulty.map((student) => {
-    return student.difficultyRating;
-  });
+  // const difficulty = averageArrayDifficulty.map((student) => {
+  //   return student.difficultyRating;
+  // });
 
-  const assignment = averageArrayDifficulty.map((student) => {
-    return student.assignment;
-  });
+  // const assignment = averageArrayDifficulty.map((student) => {
+  //   return student.assignment;
+  // });
 
   return (
     <VictoryChart
@@ -95,11 +95,11 @@ function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
         colorScale={["lightgreen", "red"]}
       >
         <VictoryBar
-          data={fun}
+          data={averageArrayDifficulty}
           style={{ data: { display: userInfo.isFun ? "block" : "none" } }}
         />
         <VictoryBar
-          data={difficulty}
+          data={averageArrayFun}
           style={{
             data: { display: userInfo.isDifficulty ? "block" : "none" },
           }}
@@ -109,4 +109,4 @@ function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
   );
 }
 
-export default BarChart;
+export default BarChartStudent;

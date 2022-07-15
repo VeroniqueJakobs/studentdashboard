@@ -57,6 +57,34 @@ function App() {
     return { assignment, funRating };
   });
 
+  //aparte evaluaties verkrijgen van de studenten van de opdrachten met fun
+  const studentFun = data.reduce((acc, { studentName, fun }) => {
+    const match = acc.get(studentName);
+    match ? match.push(fun) : acc.set(studentName, [fun]);
+    return acc;
+  }, new Map());
+
+  const studentArrayFun = Array.from(studentFun, ([studentName, fun]) => {
+    const funRating = fun;
+    return { studentName, funRating };
+  });
+
+  //aparte evaluaties verkrijgen van de studenten van de opdrachten met difficulty
+  const studentDifficulty = data.reduce((acc, { studentName, difficulty }) => {
+    const match = acc.get(studentName);
+    match ? match.push(difficulty) : acc.set(studentName, [difficulty]);
+    return acc;
+  }, new Map());
+
+  const studentArrayDifficulty = Array.from(
+    studentFun,
+    ([studentName, difficulty]) => {
+      const difficultyRating = difficulty;
+      return { studentName, difficultyRating };
+    }
+  );
+  console.log(studentArrayFun);
+  console.log(studentArrayDifficulty);
   return (
     <div>
       <Header />
@@ -79,7 +107,16 @@ function App() {
           />
           <Route
             path="/students/:first_name"
-            element={<StudentProfile mockData={mockData} data={data} />}
+            element={
+              <>
+                <StudentProfile
+                  mockData={mockData}
+                  data={data}
+                  studentFun={studentArrayFun}
+                  studentDifficulty={studentArrayDifficulty}
+                />
+              </>
+            }
           />
         </Routes>
       </Router>
