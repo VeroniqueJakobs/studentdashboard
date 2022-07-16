@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Data } from "victory";
+import BarChartStudent from "./BarChartStudent";
+const Student = ({ mockData, studentArrayFun,  studentArrayDifficulty}) => {
 
-const Student = ({ mockData }) => {
   return (
     <div>
+      
       {mockData?.map((student) => (
         <button
           key={student.id}
@@ -17,14 +20,13 @@ const Student = ({ mockData }) => {
             alt="StudentLogo"
             className="image-button "
           />
-
           <Link to={`/students/${student.first_name}`}>
             {" "}
             <h1 className="button-student">{student.first_name}</h1>
           </Link>
         </button>
       ))}
-    </div>
+        </div>
   );
 };
 

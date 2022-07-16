@@ -2,12 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import BarChartStudent from "./BarChart";
 
-const StudentProfile = ({
-  mockData,
-  studentArrayDifficulty,
-  studentArrayFun,
-}) => {
+const StudentProfile = ({ mockData, studentDifficulty, studentFun }) => {
   const { first_name } = useParams();
+  
 
   return (
     <section>
@@ -29,8 +26,9 @@ const StudentProfile = ({
                   alt="StudentLogo"
                   className="profile-picture"
                 />
+             
               </div>
-
+              
               <p>Gender: {student.gender}</p>
               <p>Date of birth: {student.age}</p>
               <p>Email: {student.email}</p>

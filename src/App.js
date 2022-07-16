@@ -9,6 +9,7 @@ import Checkboxes from "./Components/Checkboxes";
 import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StudentProfile from "./Components/StudentProfile";
+import BarChartStudent from "./Components/BarChartStudent";
 
 function App() {
   const [data, setData] = useState(studentsData);
@@ -83,8 +84,7 @@ function App() {
       return { studentName, difficultyRating };
     }
   );
-  console.log(studentArrayFun);
-  console.log(studentArrayDifficulty);
+
   return (
     <div>
       <Header />
@@ -101,7 +101,11 @@ function App() {
                   averageArrayDifficulty={averageArrayDifficulty}
                   userInfo={userInfo}
                 />
-                <StudentList mockData={mockData} />
+                <StudentList
+                  mockData={mockData}
+                  studentArrayFun={studentArrayFun}
+                  studentArrayDifficulty={studentArrayDifficulty}
+                />
               </>
             }
           />
@@ -109,6 +113,11 @@ function App() {
             path="/students/:first_name"
             element={
               <>
+                <Checkboxes handleChange={handleChange} userInfo={userInfo} />
+                <BarChartStudent
+                  averageArrayDifficulty={averageArrayDifficulty}
+                  userInfo={userInfo}
+                />
                 <StudentProfile
                   mockData={mockData}
                   data={data}

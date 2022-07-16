@@ -1,6 +1,7 @@
 import React from "react";
 
 function Checkboxes({ handleChange, userInfo }) {
+  
   return (
     <div className="checkboxes">
       <h1 className="title-overview">
