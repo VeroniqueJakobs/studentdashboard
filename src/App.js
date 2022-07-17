@@ -1,4 +1,4 @@
-import React, { useDebugValue, useState } from "react";
+import React, { useState } from "react";
 import StudentList from "./Components/Studentlist";
 import "./App.css";
 import studentsData from "./Data/studentsData";
@@ -78,11 +78,19 @@ function App() {
   }, new Map());
 
   const studentArrayDifficulty = Array.from(
-    studentFun,
+    studentDifficulty,
     ([studentName, difficulty]) => {
       const difficultyRating = difficulty;
       return { studentName, difficultyRating };
     }
+  );
+
+  //Fun en difficultyrating student samenvoegen in mockData
+  const combinedMockAndDifficulty = mockData.map((obj, index) =>
+    Object.assign({}, obj, studentArrayDifficulty[index])
+  );
+  const combinedMockAndRatings = combinedMockAndDifficulty.map((obj, index) =>
+    Object.assign({}, obj, studentArrayFun[index])
   );
 
   return (
@@ -95,17 +103,16 @@ function App() {
             path="/"
             element={
               <>
+                <h1 className="title-overview">
+                  Overview of the average of the evaluations of all students
+                </h1>
                 <Checkboxes handleChange={handleChange} userInfo={userInfo} />
                 <BarChart
                   averageArrayFun={averageArrayFun}
                   averageArrayDifficulty={averageArrayDifficulty}
                   userInfo={userInfo}
                 />
-                <StudentList
-                  mockData={mockData}
-                  studentArrayFun={studentArrayFun}
-                  studentArrayDifficulty={studentArrayDifficulty}
-                />
+                <StudentList combinedMockAndRatings={combinedMockAndRatings} />
               </>
             }
           />
@@ -113,16 +120,11 @@ function App() {
             path="/students/:first_name"
             element={
               <>
-                <Checkboxes handleChange={handleChange} userInfo={userInfo} />
-                <BarChartStudent
-                  averageArrayDifficulty={averageArrayDifficulty}
-                  userInfo={userInfo}
-                />
                 <StudentProfile
-                  mockData={mockData}
-                  data={data}
-                  studentFun={studentArrayFun}
-                  studentDifficulty={studentArrayDifficulty}
+                  combinedMockAndRatings={combinedMockAndRatings}
+                  userInfo={userInfo}
+                  averageArrayDifficulty={averageArrayDifficulty}
+                  handleChange={handleChange}
                 />
               </>
             }

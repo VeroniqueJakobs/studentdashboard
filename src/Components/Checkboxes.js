@@ -4,9 +4,7 @@ function Checkboxes({ handleChange, userInfo }) {
   
   return (
     <div className="checkboxes">
-      <h1 className="title-overview">
-        Overview of the average of the evaluations of all students
-      </h1>
+     
       <h2 className="select-checkboxes">
         {" "}
         Select the evaluation you want to view:

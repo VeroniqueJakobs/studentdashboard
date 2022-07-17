@@ -11,15 +11,15 @@ import {
 } from "victory";
 
 function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
-  const fun = averageArrayFun.map((student) => {
+  const fun = averageArrayFun?.map((student) => {
     return student.funRating;
   });
 
-  const difficulty = averageArrayDifficulty.map((student) => {
+  const difficulty = averageArrayDifficulty?.map((student) => {
     return student.difficultyRating;
   });
 
-  const assignment = averageArrayDifficulty.map((student) => {
+  const assignment = averageArrayDifficulty?.map((student) => {
     return student.assignment;
   });
 

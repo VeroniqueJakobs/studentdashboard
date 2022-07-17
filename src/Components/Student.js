@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Data } from "victory";
 import BarChartStudent from "./BarChartStudent";
-const Student = ({ mockData, studentArrayFun,  studentArrayDifficulty}) => {
+const Student = ({combinedMockAndRatings}) => {
 
   return (
     <div>
       
-      {mockData?.map((student) => (
+      {combinedMockAndRatings?.map((student) => (
         <button
           key={student.id}
           id={student.id}
           className="student-profiles"
           value={student.title}
           name={student.first_name}
-        >
+                  >
           <img
             src={student.profile_pic}
             alt="StudentLogo"

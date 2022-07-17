@@ -25,7 +25,7 @@
 }
 
 .checkboxes {
-  margin: 40px 10% 30px 10%;
+  margin: 20px 10% 30px 10%;
 }
 
 .footer {
@@ -41,6 +41,10 @@
   width: 100px;
 }
 
+.profile-picture-separate{
+  margin-top:40px;
+}
+
 .select-checkboxes {
   display: inline;
   color: rgb(176, 181, 182);
@@ -48,11 +52,22 @@
   font-size: 110%;
 }
 
+.student-info{
+  background-color: rgb(213, 231, 250);
+  height: 400px;
+  font-size:120% ;
+}
+
+
 .student-name {
   color: black;
   margin-top:-14px;
   font-size:200%;
 
+}
+
+.title-overview{
+  margin-top:40px;
 }
 
 .student-title-overview {

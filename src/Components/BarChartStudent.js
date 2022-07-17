@@ -10,16 +10,18 @@ import {
   VictoryLabel,
 } from "victory";
 
-function BarChartStudent({   studentArrayFun,   studentArrayDifficulty, averageArrayDifficulty, userInfo }) {
+function BarChartStudent({
+  combinedMockAndRatings,
+  averageArrayDifficulty,
+  studentArrayFun,
+  studentArrayDifficulty,
+  userInfo,
+}) {
+  console.log(averageArrayDifficulty)
+  const fun =studentArrayFun
 
-  const fun = studentArrayFun?.map((student) => {
-    return student.funRating;
-  });
+  const difficulty = studentArrayDifficulty
 
-  const difficulty = studentArrayDifficulty?.map((student) => {
-    return student.difficultyRating;
-  });
- 
   const assignment = averageArrayDifficulty?.map((student) => {
     return student.assignment;
   });
@@ -31,7 +33,7 @@ function BarChartStudent({   studentArrayFun,   studentArrayDifficulty, averageA
       height={300}
       domain={{ x: [0, 57] }}
       containerComponent={
-        <VictoryContainer width={700} height={340} responsive={true}/>
+        <VictoryContainer width={700} height={340} responsive={true} />
       }
     >
       <VictoryLegend
@@ -56,7 +58,7 @@ function BarChartStudent({   studentArrayFun,   studentArrayDifficulty, averageA
 
       <VictoryAxis
         // X-as
-          style={{
+        style={{
           axisLabel: { fontSize: 14, padding: 40 },
           ticks: { stroke: "grey", size: 4 },
           tickLabels: {
@@ -67,7 +69,7 @@ function BarChartStudent({   studentArrayFun,   studentArrayDifficulty, averageA
           },
         }}
         // tickValues specifies both the number of ticks and where they are placed on the axis
-       // tickValues={[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 enz. tot aan de lengte van de opdrachten]}
+        // tickValues={[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 enz. tot aan de lengte van de opdrachten]}
         tickFormat={assignment}
       />
       <VictoryLabel
@@ -97,12 +99,12 @@ function BarChartStudent({   studentArrayFun,   studentArrayDifficulty, averageA
       >
         <VictoryBar
           data={difficulty}
-        style={{ data: { display: userInfo.isFun ? "block" : "none" } }}
+          style={{ data: { display: userInfo.isFun ? "block" : "none" } }}
         />
         <VictoryBar
           data={fun}
           style={{
-          data: { display: userInfo.isDifficulty ? "block" : "none" },
+            data: { display: userInfo.isDifficulty ? "block" : "none" },
           }}
         />
       </VictoryGroup>
