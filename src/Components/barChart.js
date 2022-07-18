@@ -28,7 +28,8 @@ function BarChart({ userInfo, averageArrayDifficulty, averageArrayFun }) {
       theme={VictoryTheme.material}
       width={670}
       height={300}
-      domain={{ x: [0, 57] }}
+      domain={{ x: [0, 56] }}
+     // domainPadding={[-1,57]}
       containerComponent={
         <VictoryContainer width={700} height={340} responsive={true} />
       }

@@ -9,7 +9,6 @@ import Checkboxes from "./Components/Checkboxes";
 import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StudentProfile from "./Components/StudentProfile";
-import BarChartStudent from "./Components/BarChartStudent";
 
 function App() {
   const [data, setData] = useState(studentsData);

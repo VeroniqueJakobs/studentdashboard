@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import BarChartStudent from "./BarChart";
+import BarChartStudent from "./BarChartStudent";
 import Checkboxes from "./Checkboxes";
 
 const StudentProfile = ({
@@ -38,9 +38,9 @@ const StudentProfile = ({
                   alt="StudentLogo"
                   className="profile-picture-separate"
                 />
-                <p>Gender: {student.gender}</p>
-                <p>Email: {student.email}</p>
-                <p>Phone: {student.phone}</p>
+                <p className="profile-info">Gender: {student.gender}</p>
+                <p className="profile-info">Email: {student.email}</p>
+                <p className="profile-info">Phone: {student.phone}</p>
               </div>
             </div>
           ))}

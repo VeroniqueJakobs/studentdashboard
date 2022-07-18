@@ -28,6 +28,10 @@
   margin: 20px 10% 30px 10%;
 }
 
+.content-profile {
+  display: inline;
+}
+
 .footer {
   background-color: rgb(79, 139, 201);
   height: 60px;
@@ -37,12 +41,20 @@
   padding-right: 20px;
 }
 
+.profile-container {
+  text-align: left;
+}
+
+.profile-info {
+  font-weight: bold;
+}
+
 .profile-picture {
   width: 100px;
 }
 
-.profile-picture-separate{
-  margin-top:40px;
+.profile-picture-separate {
+  margin-top: 40px;
 }
 
 .select-checkboxes {
@@ -52,22 +64,20 @@
   font-size: 110%;
 }
 
-.student-info{
+.student-info {
   background-color: rgb(213, 231, 250);
   height: 400px;
-  font-size:120% ;
+  font-size: 120%;
 }
-
 
 .student-name {
   color: black;
-  margin-top:-14px;
-  font-size:200%;
-
+  margin-top: -14px;
+  font-size: 200%;
 }
 
-.title-overview{
-  margin-top:40px;
+.title-overview {
+  margin-top: 40px;
 }
 
 .student-title-overview {

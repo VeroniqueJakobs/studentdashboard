@@ -1,10 +1,8 @@
 import React from "react";
 
 function Checkboxes({ handleChange, userInfo }) {
-  
   return (
     <div className="checkboxes">
-     
       <h2 className="select-checkboxes">
         {" "}
         Select the evaluation you want to view:
@@ -13,7 +11,7 @@ function Checkboxes({ handleChange, userInfo }) {
         <input
           type="checkbox"
           name="isFun"
-         // value="Fun"
+          // value="Fun"
           checked={userInfo.isFun}
           onChange={handleChange}
         />
@@ -23,7 +21,7 @@ function Checkboxes({ handleChange, userInfo }) {
         <input
           type="checkbox"
           name="isDifficulty"
-        //  value="Difficulty"  Bij gebruik van de value is het een ongecontroleerd element, vandaar het gebruik van checked
+          //  value="Difficulty"  Bij gebruik van de value is het een ongecontroleerd element, vandaar het gebruik van checked
           checked={userInfo.isDifficulty}
           onChange={handleChange}
         />
